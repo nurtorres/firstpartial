@@ -1,0 +1,10 @@
+#the letter to our ex
+from statistics import mean 
+
+inp_lst = [10, 5, 8] 
+list_avg = mean(inp_lst) 
+
+print("Average value of the list:\n") 
+print(list_avg) 
+
+print(round(list_avg,3))

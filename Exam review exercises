@@ -1,0 +1,31 @@
+#exercise 1
+def tip():
+2
+print( "tip calculator")
+variable = input( )
+print("the total amount to pay", variable)
+print( please insert the precentage of tip", )
+number = input )
+result = int (number )×10
+print( "your number multiplied by 10 is", result)
+tip()
+
+#exercise 2
+def tip():
+2
+print( "tip calculator")
+variable = input( )
+print("the total amount to pay", variable)
+print( please insert the precentage of tip", )
+number = input )
+result = int (number )×10
+print( "your number multiplied by 10 is", result)
+tip()
+
+#exercise 3
+def temperature( ):
+print( 'write the temperature in celstus')
+number = input()
+result = in(number )*(9/5)+32
+print( your temperature transformed to Farenhett is' result)
+temperature()

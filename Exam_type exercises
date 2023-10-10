@@ -1,0 +1,103 @@
+#retirement 
+def calculate_monthly_savings(current_age, retirement_age, desired_amount, annual_return_rate):
+    # Calculate the number of years until retirement
+    years_until_retirement = retirement_age - current_age
+
+    # Calculate the total number of months until retirement
+    total_months_until_retirement = years_until_retirement * 12
+
+    # Convert the annual return rate to a monthly return rate
+    monthly_return_rate = (1 + annual_return_rate) ** (1 / 12) - 1
+
+    # Calculate the monthly savings needed using the future value of an annuity formula
+    monthly_savings = (desired_amount * monthly_return_rate) / ((1 + monthly_return_rate) ** total_months_until_retirement - 1)
+
+    return monthly_savings
+
+# Input from the user
+try:
+    current_age = int(input("Enter your current age: "))
+    retirement_age = int(input("Enter the age at which you plan to retire: "))
+    desired_amount = float(input("Enter your desired retirement amount: $"))
+    annual_return_rate = float(input("Enter your expected annual investment return rate (as a decimal): "))
+
+    # Calculate and display the monthly savings needed
+    monthly_savings_needed = calculate_monthly_savings(current_age, retirement_age, desired_amount, annual_return_rate)
+    print(f"You should save ${monthly_savings_needed:.2f} monthly for your retirement.")
+
+except ValueError:
+    print("Invalid input. Please enter valid numeric values.")
+
+
+
+#discount
+def apply_discount(price, category, units):
+    
+    discount_rates = {'A': 0.10, 'B': 0.05, 'C': 0.02}
+
+   
+    if category not in discount_rates:
+        print("Invalid category. Please choose A, B, or C.")
+        return 
+
+    
+    total_price = price * units
+
+   
+    discount_rate = discount_rates[category]
+    discounted_price = total_price * (1 - discount_rate)
+
+   
+    if units > 10:
+        additional_discount = 0.05
+        discounted_price *= (1 - additional_discount)
+
+    return discounted_price
+
+
+try:
+    price = float(input("Enter the price of the product: $"))
+    category = input("Enter the category (A, B, or C): ").upper()
+    units = int(input("Enter the number of units purchased: "))
+
+   
+    final_price = apply_discount(price, category, units)
+
+
+#students average grade
+def calculate_statistics(grades):
+    
+    average_grade = sum(grades) / len(grades)
+
+    
+    highest_grade = max(grades)
+    lowest_grade = min(grades)
+
+    
+    passed_count = sum(1 for grade in grades if grade >= 60)
+    failed_count = len(grades) - passed_count
+
+    return average_grade, highest_grade, lowest_grade, passed_count, failed_count
+
+
+try:
+    num_students = int(input("Enter the number of students: "))
+    grades = []
+
+    for i in range(num_students):
+        grade = float(input(f"Enter the grade for student {i + 1}: "))
+        grades.append(grade)
+
+ 
+    average, highest, lowest, passed, failed = calculate_statistics(grades)
+
+    print(f"Average Grade: {average:.2f}")
+    print(f"Highest Grade: {highest}")
+    print(f"Lowest Grade: {lowest}")
+    print(f"Number of Students Passed: {passed}")
+    print(f"Number of Students Failed: {failed}")
+
+
+except ValueError:
+    print("Invalid input. Please enter valid numeric grades.")
+

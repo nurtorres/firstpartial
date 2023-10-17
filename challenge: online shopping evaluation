@@ -1,3 +1,5 @@
+#https://replit.com/join/ddpckjnjuz-a00574487
+
 amount = int(input("Enter the amount of purchase: $"))
 if amount > 100:
   print(amount * 0.10)

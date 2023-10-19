@@ -1,0 +1,25 @@
+temperature = int(input("enter the temperature in celsius:"))
+watering = input("What day is today?")
+humidity = int(input("enter the humidity precentahe:"))
+
+if humidity < 20:
+  print("you should water Ruby")
+elif humidity >= 20 and humidity <= 22:
+  print("suitable humidity")
+elif humidity >22 and watering == "Monday" or watering == "Wednesday" or watering == "Friday" or watering == "Sunday":
+  print("It is not necessary to water Ruby")
+
+if temperature >= 20 and temperature<= 25:
+    print("Good conditions")
+elif temperature < 20:
+  print("Bring it insde the house")
+elif temperature > 25:
+  print("Bring it inside the house and turn on the fan")
+
+if watering == "Tuesday":
+  print("Water Ruby")
+elif watering == "Thursday":
+  print("Water Ruby")
+elif watering == "Saturday":
+  print("Water Ruby")
+

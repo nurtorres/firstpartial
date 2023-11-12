@@ -1,0 +1,95 @@
+#ollivanders
+customers = {}
+
+def enter_store(customer_name):
+    if customer_name not in customers:
+        customers[customer_name] = {"bought": False, "wand": None}
+        print(f"Welcome, {customer_name}!")
+    else:
+        print(f"{customer_name}, you are already in the store.")
+
+def buy_wand(customer_name, wand_choice):
+    if customer_name in customers:
+        if not customers[customer_name]["bought"]:
+            if 1 <= wand_choice <= 4:
+                wand_options = {
+                    1: "Elder Wand",
+                    2: "Hawthorn Wand",
+                    3: "Willow Wand",
+                    4: "Holly Wand"
+                }
+
+                wand_name = wand_options[wand_choice]
+                customers[customer_name]["bought"] = True
+                customers[customer_name]["wand"] = wand_name
+
+                print(f"Thank you, {customer_name}! You bought a {wand_name}.")
+            else:
+                print("Invalid wand choice. Please select a wand between 1 and 4.")
+        else:
+            print(f"{customer_name}, you have already bought a wand.")
+    else:
+        print(f"{customer_name}, you are not in the store.")
+
+def display_customers():
+    print("\nCustomer List:")
+    for customer_name, info in customers.items():
+        print(f"{customer_name}: Bought a wand - {info['bought']}, Wand - {info['wand']}")
+
+
+enter_store("Customer1")
+enter_store("Customer2")
+
+buy_wand("Customer1", 2)  
+buy_wand("Customer2", 3)  
+
+display_customers()
+
+
+#alexa
+def detect_alexa(text):
+  
+  lowercase_text = text.lower()
+
+  
+  words = lowercase_text.split()
+
+  
+  alexa_count = words.count('alexa')
+
+  
+  if alexa_count == 1:
+      print("Alexa: Yes?")
+  elif alexa_count > 1:
+      print("Hey, just say my name once.")
+  else:
+      print("Alexa is not mentioned.")
+
+
+user_input = input("Type a text: ")
+detect_alexa(user_input)
+
+#errors
+def calculate_error_rate(temperatures):
+  expected_range = range(10, 41)
+  error_count = sum(1 for temp in temperatures if temp not in expected_range)
+  error_rate = (error_count / len(temperatures)) * 100
+  return error_count, error_rate
+
+def main():
+  num_readings = int(input("How many temperature readings do you have?: "))
+
+  temperature_readings = []
+  for i in range(1, num_readings + 1):
+      temperature = float(input(f"Insert temperature {i}: "))
+      temperature_readings.append(temperature)
+
+
+  error_count, error_rate = calculate_error_rate(temperature_readings)
+
+
+  print(f"\nThe sensor went wrong {error_count} times.")
+  print(f"The sensor error rate is {error_rate}%.")
+
+if __name__ == "__main__":
+  main()
